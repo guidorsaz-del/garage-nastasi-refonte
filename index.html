@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage Nastasi — Votre expert automobile à Aigle</title>
+<meta name="description" content="Garage Nastasi à Aigle : mécanique toutes marques, carrosserie, pneus, vente de véhicules neufs et d'occasion, location et expertise. Garage familial depuis 1988.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eceff3;
+  --paper:#ffffff;
+  --ink:#13161c;
+  --graphite:#1b1f27;
+  --steel:#5c6573;
+  --accent:#1f50a8;
+  --accent-2:#2f6df0;
+  --line:#dde2e8;
+  --shadow:0 26px 60px -30px rgba(19,22,28,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Work Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:'Unbounded',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1.25rem 0;transition:.4s}
+nav.scrolled{background:rgba(255,255,255,.96);padding:.7rem 0;box-shadow:0 1px 0 var(--line);backdrop-filter:blur(8px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;transition:.4s;display:flex;align-items:center;gap:.5rem}
+.logo .dot{width:11px;height:11px;background:var(--accent-2);border-radius:50%;display:inline-block}
+nav.scrolled .logo{color:var(--ink)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.82rem;letter-spacing:.04em;color:rgba(255,255,255,.85);font-weight:600;transition:.3s}
+nav.scrolled .nav-links a{color:var(--steel)}
+.nav-links a:hover{color:var(--accent-2)}
+.nav-cta{background:var(--accent);color:#fff!important;padding:.6rem 1.3rem;border-radius:6px}
+.nav-cta:hover{background:var(--accent-2)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+nav.scrolled .burger span{background:var(--ink)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;
+  background:linear-gradient(105deg,rgba(12,14,18,.92) 0%,rgba(12,14,18,.6) 55%,rgba(12,14,18,.25) 100%),
+  url('https://images.unsplash.com/photo-1613214150132-9606e332d68e?w=1700&auto=format&fit=crop&q=82') center/cover no-repeat}
+.hero-in{max-width:720px}
+.hero .eyebrow{color:var(--accent-2)}
+.hero h1{font-size:clamp(2.7rem,7vw,5.2rem);margin:1.1rem 0 1.4rem}
+.hero h1 span{color:var(--accent-2)}
+.hero p{font-size:1.18rem;max-width:31em;color:rgba(255,255,255,.86);font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.1rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.8rem;border-radius:7px;font-size:.82rem;letter-spacing:.04em;font-weight:600;transition:transform .3s,background .3s,color .3s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{transform:translateY(-3px);background:var(--accent-2)}
+.btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.hero-tags{display:flex;gap:1.6rem;margin-top:2.6rem;flex-wrap:wrap;font-size:.8rem;letter-spacing:.05em;color:rgba(255,255,255,.7);font-weight:500}
+.hero-tags span{display:flex;align-items:center;gap:.5rem}
+.hero-tags svg{width:17px;height:17px;color:var(--accent-2)}
+
+/* STATS */
+.stats{background:var(--graphite);color:#fff;padding:2.4rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.stat b{font-family:'Unbounded';font-size:2.6rem;display:block;line-height:1;color:#fff}
+.stat span{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.4rem;display:block}
+.stat b .pre{color:var(--accent-2)}
+
+/* TABS SIGNATURE */
+.services{padding:6rem 0 5rem}
+.serv-head{max-width:620px;margin-bottom:3rem}
+.serv-head h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:.8rem 0}
+.serv-head p{color:var(--steel)}
+.tabbar{position:relative;display:flex;gap:.4rem;border-bottom:1px solid var(--line);overflow-x:auto;margin-bottom:2.6rem}
+.tab{flex:0 0 auto;background:none;border:none;padding:1rem 1.3rem;font-family:'Work Sans';font-size:.95rem;font-weight:600;color:var(--steel);cursor:pointer;letter-spacing:.01em;white-space:nowrap;transition:color .3s}
+.tab.active{color:var(--ink)}
+.tab:hover{color:var(--accent)}
+.tab-underline{position:absolute;bottom:-1px;height:3px;background:var(--accent);border-radius:3px;transition:left .4s cubic-bezier(.2,.7,.2,1),width .4s cubic-bezier(.2,.7,.2,1)}
+.tab-panes{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+.pane-text{position:relative;min-height:240px}
+.pane{position:absolute;inset:0;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .45s,transform .45s}
+.pane.show{opacity:1;transform:none;pointer-events:auto;position:relative}
+.pane .num{font-family:'Unbounded';font-size:.9rem;color:var(--accent);font-weight:700}
+.pane h3{font-size:1.9rem;margin:.5rem 0 1rem}
+.pane p{color:var(--steel);margin-bottom:1.2rem}
+.pane ul{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem}
+.pane li{font-size:.84rem;background:var(--paper);border:1px solid var(--line);padding:.45rem .9rem;border-radius:30px;color:var(--ink);font-weight:500}
+.pane-img{position:relative;border-radius:12px;overflow:hidden;height:420px;box-shadow:var(--shadow)}
+.pane-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s,transform 6s ease}
+.pane-img img.show{opacity:1;transform:scale(1.06)}
+
+/* VEHICLES teaser */
+.vehicles{padding:5rem 0;background:var(--graphite);color:#fff}
+.veh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.veh-head h2{font-size:clamp(2rem,4.5vw,3rem)}
+.veh-head .eyebrow{color:var(--accent-2)}
+.veh-head p{color:rgba(255,255,255,.6);max-width:26em;font-size:.95rem}
+.veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.veh-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;transition:transform .4s,border-color .4s}
+.veh-card:hover{transform:translateY(-6px);border-color:var(--accent-2)}
+.veh-card .ph{height:190px;background-size:cover;background-position:center}
+.veh-card .body{padding:1.4rem 1.5rem}
+.veh-card .body b{font-family:'Unbounded';font-size:1rem;display:block}
+.veh-card .body span{font-size:.85rem;color:rgba(255,255,255,.55)}
+.veh-note{text-align:center;margin-top:2.4rem;color:rgba(255,255,255,.6);font-size:.92rem}
+.veh-note a{color:var(--accent-2);font-weight:600}
+
+/* ABOUT */
+.about{padding:6rem 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-grid img{border-radius:12px;height:460px;width:100%;object-fit:cover;box-shadow:var(--shadow)}
+.about h2{font-size:clamp(2.2rem,4.6vw,3.2rem);margin:1rem 0 1.4rem}
+.about p{color:var(--steel);margin-bottom:1.1rem;max-width:34em}
+.about .fam{margin-top:1.6rem;display:flex;gap:2rem;flex-wrap:wrap}
+.about .fam div b{font-family:'Unbounded';font-size:1.1rem;color:var(--accent);display:block}
+.about .fam div span{font-size:.84rem;color:var(--steel)}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--graphite);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact h2{font-size:clamp(2.2rem,4.6vw,3.2rem);color:#fff;margin:1rem 0 1.4rem}
+.contact .eyebrow{color:var(--accent-2)}
+.contact p.lead{color:rgba(255,255,255,.7);max-width:30em;margin-bottom:2rem}
+.crow{display:flex;gap:1rem;padding:1.2rem 0;border-top:1px solid rgba(255,255,255,.13);align-items:flex-start}
+.crow:last-child{border-bottom:1px solid rgba(255,255,255,.13)}
+.crow .ic{width:24px;height:24px;color:var(--accent-2);flex-shrink:0;margin-top:3px}
+.crow b{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.2rem;font-weight:700}
+.crow span{font-size:1.04rem;color:#fff}
+.contact-card{background:var(--paper);color:var(--ink);border-radius:14px;padding:3rem 2.6rem;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
+.contact-card h3{font-size:1.7rem;margin-bottom:.6rem}
+.contact-card p{color:var(--steel);margin-bottom:1.6rem}
+.contact-card .btn{justify-content:center;margin-bottom:.8rem}
+.contact-card .btn-dark{background:var(--graphite);color:#fff}
+.contact-card .btn-dark:hover{background:var(--ink)}
+.contact-card .btn-out{border:1px solid var(--line);color:var(--ink)}
+.contact-card .btn-out:hover{border-color:var(--accent)}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:3.2rem 0 6rem;text-align:center}
+footer .logo{color:#fff;justify-content:center;margin-bottom:.5rem}
+footer .fl{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin:1.3rem 0;font-size:.85rem}
+footer .fl a:hover{color:var(--accent-2)}
+footer small{font-size:.78rem;color:rgba(255,255,255,.4)}
+
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:120;background:rgba(19,22,28,.92);color:#fff;font-family:'Work Sans';font-size:.7rem;padding:.45rem .8rem;border-radius:30px;letter-spacing:.03em;backdrop-filter:blur(6px)}
+.demo-badge b{color:var(--accent-2);font-weight:700}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:80vw;background:var(--paper);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 2.4rem;gap:1.6rem;transform:translateX(100%);transition:transform .4s;box-shadow:var(--shadow)}
+  .nav-links.open{transform:none}
+  .nav-links a{color:var(--ink)!important;font-size:1rem}
+  .burger{display:flex}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .tab-panes,.about-grid,.contact-grid{grid-template-columns:1fr;gap:2.4rem}
+  .veh-grid{grid-template-columns:1fr 1fr}
+  .pane-img{height:320px}
+  .about-grid img{height:360px}
+}
+@media(max-width:560px){
+  .veh-grid{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .nav-links{width:90vw}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .pane-img img.show{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><span class="dot"></span>Garage Nastasi</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#services">Prestations</a>
+      <a href="#vehicules">Véhicules</a>
+      <a href="#apropos">Le garage</a>
+      <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
+    </div>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <span class="eyebrow">Aigle · Toutes marques · Depuis 1988</span>
+    <h1>Votre voiture entre<br>de <span>bonnes mains</span>.</h1>
+    <p>Mécanique, carrosserie, pneus, vente et expertise : un garage familial qui s'occupe de tout, sans vous faire perdre votre temps.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+      <a href="#services" class="btn btn-ghost">Voir nos prestations</a>
+    </div>
+    <div class="hero-tags">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Toutes marques</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Devis gratuit</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Véhicule de remplacement</span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b><span class="pre"></span><span data-count="37">0</span></b><span>Ans d'expérience</span></div>
+    <div class="stat"><b><span data-count="3">0</span></b><span>Générations</span></div>
+    <div class="stat"><b><span data-count="5">0</span></b><span>Métiers sous un toit</span></div>
+    <div class="stat"><b>100<span style="color:var(--accent-2)">%</span></b><span>Toutes marques</span></div>
+  </div>
+</section>
+
+<!-- SERVICES TABS -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="serv-head reveal">
+      <span class="eyebrow">Nos prestations</span>
+      <h2>Un seul garage,<br>pour tout votre véhicule.</h2>
+      <p>Sélectionnez une prestation pour en savoir plus.</p>
+    </div>
+
+    <div class="tabbar" id="tabbar">
+      <button class="tab active" data-i="0">Mécanique</button>
+      <button class="tab" data-i="1">Carrosserie</button>
+      <button class="tab" data-i="2">Pneus & roues</button>
+      <button class="tab" data-i="3">Vente & occasion</button>
+      <button class="tab" data-i="4">Location & expertise</button>
+      <span class="tab-underline" id="underline"></span>
+    </div>
+
+    <div class="tab-panes reveal">
+      <div class="pane-text">
+        <div class="pane show">
+          <span class="num">01</span>
+          <h3>Entretien & mécanique</h3>
+          <p>Service, révision, diagnostic électronique, freins, distribution, climatisation. On répare tout, toutes marques, avec des pièces de qualité et un devis clair avant d'intervenir.</p>
+          <ul><li>Service & révision</li><li>Diagnostic</li><li>Freins & embrayage</li><li>Climatisation</li></ul>
+        </div>
+        <div class="pane">
+          <span class="num">02</span>
+          <h3>Carrosserie & peinture</h3>
+          <p>Réparation après sinistre, débosselage, peinture et finitions. On redonne à votre voiture son aspect d'origine et on gère les démarches avec votre assurance.</p>
+          <ul><li>Sinistres</li><li>Débosselage</li><li>Peinture</li><li>Relation assurance</li></ul>
+        </div>
+        <div class="pane">
+          <span class="num">03</span>
+          <h3>Pneus & roues</h3>
+          <p>Montage, équilibrage, géométrie et stockage de vos pneus. Conseil sur le bon pneu selon votre usage et la saison, sans vous pousser à la dépense.</p>
+          <ul><li>Montage & équilibrage</li><li>Géométrie</li><li>Hôtel à pneus</li><li>Toutes dimensions</li></ul>
+        </div>
+        <div class="pane">
+          <span class="num">04</span>
+          <h3>Vente neuf & occasion</h3>
+          <p>Un choix de véhicules neufs et d'occasion contrôlés, préparés et garantis. On reprend aussi votre ancienne voiture et on vous aide pour le financement.</p>
+          <ul><li>Occasions garanties</li><li>Reprise</li><li>Financement</li><li>Préparation</li></ul>
+        </div>
+        <div class="pane">
+          <span class="num">05</span>
+          <h3>Location & expertise</h3>
+          <p>Véhicule de remplacement pendant la réparation, préparation à l'expertise et passage au contrôle technique. Tout est pris en charge pour vous simplifier la vie.</p>
+          <ul><li>Véhicule de remplacement</li><li>Préparation expertise</li><li>Contrôle technique</li><li>Remise de clés</li></ul>
+        </div>
+      </div>
+      <div class="pane-img" id="paneImg">
+        <img class="show" data-i="0" src="https://images.unsplash.com/photo-1618783129985-dd97dbe4ad99?w=1100&auto=format&fit=crop&q=82" alt="Mécanicien au travail sur un moteur">
+        <img data-i="1" src="https://images.unsplash.com/photo-1632081832580-43daae2c9204?w=1100&auto=format&fit=crop&q=82" alt="Véhicule à la finition impeccable">
+        <img data-i="2" src="https://images.unsplash.com/photo-1593699199342-59b40e08f0ac?w=1100&auto=format&fit=crop&q=82" alt="Changement et montage de pneu">
+        <img data-i="3" src="https://images.unsplash.com/photo-1626100585171-e73444ee0e50?w=1100&auto=format&fit=crop&q=82" alt="Véhicule sur la route">
+        <img data-i="4" src="https://images.unsplash.com/photo-1533558701576-23c65e0272fb?w=1100&auto=format&fit=crop&q=82" alt="Remise des clés d'un véhicule">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICLES -->
+<section class="vehicles" id="vehicules">
+  <div class="wrap">
+    <div class="veh-head reveal">
+      <div>
+        <span class="eyebrow">Occasions du moment</span>
+        <h2>Nos véhicules</h2>
+      </div>
+      <p>Une sélection d'occasions contrôlées et garanties. Le stock évolue chaque semaine.</p>
+    </div>
+    <div class="veh-grid">
+      <div class="veh-card reveal">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1632081832580-43daae2c9204?w=800&auto=format&fit=crop&q=80')"></div>
+        <div class="body"><b>Berline premium</b><span>Occasion contrôlée · Sur demande</span></div>
+      </div>
+      <div class="veh-card reveal">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1626100585171-e73444ee0e50?w=800&auto=format&fit=crop&q=80')"></div>
+        <div class="body"><b>Compacte familiale</b><span>Occasion garantie · Sur demande</span></div>
+      </div>
+      <div class="veh-card reveal">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1613214150132-9606e332d68e?w=800&auto=format&fit=crop&q=80')"></div>
+        <div class="body"><b>SUV toutes options</b><span>Occasion préparée · Sur demande</span></div>
+      </div>
+    </div>
+    <p class="veh-note">Une voiture précise en tête ? <a href="#contact">Dites-nous ce que vous cherchez</a>, on trouve pour vous.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="apropos">
+  <div class="wrap about-grid">
+    <img class="reveal" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1000&auto=format&fit=crop&q=82" alt="Atelier du Garage Nastasi">
+    <div class="reveal">
+      <span class="eyebrow">Le garage</span>
+      <h2>Une histoire de famille,<br>depuis 1988.</h2>
+      <p>Le Garage Nastasi a été fondé en 1988 par Francesca et Santo Nastasi. En 2012, leur fils Mario a repris les rênes, avec la même idée en tête : un garage où l'on traite chaque client comme un voisin, pas comme un numéro.</p>
+      <p>Mécanique, carrosserie, pneus, vente : tout est réuni au même endroit, à Aigle, pour vous faire gagner du temps et vous parler franchement.</p>
+      <div class="fam">
+        <div><b>Mario Nastasi</b><span>Direction, 2<sup>e</sup> génération</span></div>
+        <div><b>Aigle</b><span>Chemin de Marjolin 87</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Nous contacter</span>
+      <h2>Prenons rendez-vous.</h2>
+      <p class="lead">Un bruit suspect, un service à faire, une voiture à vendre ou à acheter ? Appelez-nous ou passez à l'atelier, on s'occupe du reste.</p>
+      <div class="crow">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><b>Adresse</b><span>Chemin de Marjolin 87, 1860 Aigle</span></div>
+      </div>
+      <div class="crow">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 19 19 0 0 1-5.8-5.8 19 19 0 0 1-3-8.3A2 2 0 0 1 4.7 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.6 10a16 16 0 0 0 5.4 5.4l1.4-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        <div><b>Téléphone</b><span>024 466 33 66</span></div>
+      </div>
+      <div class="crow">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div><b>Horaires</b><span>Lun – Ven : 7h30–12h · 13h30–17h30</span></div>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <h3>Un devis ou un rendez-vous ?</h3>
+      <p>Le plus simple : un appel, et on convient ensemble d'un créneau.</p>
+      <a href="tel:+41244663366" class="btn btn-dark">Appeler le 024 466 33 66</a>
+      <a href="mailto:atelier@garagenastasi.ch?subject=Demande%20de%20rendez-vous" class="btn btn-out">Écrire à l'atelier</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="dot"></span>Garage Nastasi</a>
+    <div class="fl">
+      <a href="#services">Prestations</a>
+      <a href="#vehicules">Véhicules</a>
+      <a href="#apropos">Le garage</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <small>Chemin de Marjolin 87, 1860 Aigle · 024 466 33 66 · atelier@garagenastasi.ch<br>© <span id="yr"></span> Garage Nastasi · Votre expert automobile à Aigle</small>
+  </div>
+</footer>
+
+<div class="demo-badge">Site de démonstration réalisé par <b>Horizon IA</b></div>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// TABS
+const tabs=[...document.querySelectorAll('.tab')];
+const panes=[...document.querySelectorAll('.pane')];
+const imgs=[...document.querySelectorAll('#paneImg img')];
+const underline=document.getElementById('underline');
+function moveUnderline(t){underline.style.left=t.offsetLeft+'px';underline.style.width=t.offsetWidth+'px';}
+function select(i){
+  tabs.forEach(t=>t.classList.toggle('active',+t.dataset.i===i));
+  panes.forEach((p,k)=>p.classList.toggle('show',k===i));
+  imgs.forEach(im=>im.classList.toggle('show',+im.dataset.i===i));
+  moveUnderline(tabs[i]);
+}
+tabs.forEach(t=>t.addEventListener('click',()=>select(+t.dataset.i)));
+addEventListener('load',()=>moveUnderline(tabs[0]));
+addEventListener('resize',()=>moveUnderline(document.querySelector('.tab.active')));
+setTimeout(()=>moveUnderline(tabs[0]),250);
+
+// COUNTERS
+const counters=[...document.querySelectorAll('[data-count]')];
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{
+  if(e.isIntersecting){
+    const el=e.target,target=+el.dataset.count;let n=0;
+    const step=Math.max(1,Math.round(target/40));
+    const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t)}el.textContent=n;},28);
+    cio.unobserve(el);
+  }
+}),{threshold:.5});
+counters.forEach(c=>cio.observe(c));
+</script>
+</body>
+</html>
