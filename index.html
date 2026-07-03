@@ -416,7 +416,8 @@ const cio=new IntersectionObserver((es)=>es.forEach(e=>{
 counters.forEach(c=>cio.observe(c));
 </script>
 
-<!-- HORIZONIA-FIX menu-mobile v2 : corrige l'affichage du menu mobile au scroll, ajoute croix + fond cliquable + blocage du scroll. CSS/JS auto-contenu, n'altere ni la structure ni le contenu. -->
+
+<!-- HORIZONIA-FIX menu-mobile v3 : corrige l'affichage du menu mobile au scroll, ajoute croix + fond cliquable + blocage du scroll. CSS/JS auto-contenu, n'altere ni la structure ni le contenu. -->
 <style id="hznMenuFixCss">
 .hzn-backdrop{position:fixed;inset:0;background:rgba(6,8,12,.5);opacity:0;pointer-events:none;transition:opacity .3s ease}
 .hzn-backdrop.hzn-show{opacity:1;pointer-events:auto}
@@ -451,14 +452,23 @@ html.hzn-lock,body.hzn-lock{overflow:hidden!important}
     var z=parseInt(getComputedStyle(drawer).zIndex,10);if(!z||isNaN(z))z=1000;
     backdrop.style.zIndex=z;drawer.style.zIndex=z+1;closeBtn.style.zIndex=z+2;
   }
-  function isOpen(){
-    if(!MOB())return false;
+  var baseTokens=drawer.className.trim().split(/\s+/).filter(Boolean);
+  var usesClass=false;
+  function classOpen(){
+    var c=drawer.className.trim().split(/\s+/).filter(Boolean);
+    var extra=c.some(function(t){return baseTokens.indexOf(t)===-1;});
+    if(extra)usesClass=true;
+    return extra;
+  }
+  function geoOpen(){
     var cs=getComputedStyle(drawer);
     if(cs.position!=='fixed'&&cs.position!=='absolute')return false;
     if(cs.display==='none'||cs.visibility==='hidden'||parseFloat(cs.opacity)===0)return false;
     var r=drawer.getBoundingClientRect();
     return r.width>4&&r.height>4&&r.left<window.innerWidth-4&&r.right>4&&r.top<window.innerHeight;
   }
+  // Etat base sur la CLASSE (instantane), avec repli geometrique pour les menus sans classe.
+  function isOpen(){ if(!MOB())return false; var co=classOpen(); return usesClass?co:geoOpen(); }
   var state=false;
   function apply(){
     var op=isOpen();if(op===state)return;state=op;
